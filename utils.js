@@ -1,3 +1,10 @@
+/*
+* Good chunks of this file contains similar to
+* Daniel Shiffman's 'Coding Challenge' video found at: https://www.youtube.com/watch?v=OJxEcs0w_kE&vl=en.
+* The video series explains how to implement a Quad Tree data structure.
+*/
+
+
 function randBetween(min=-1, max=1) {
   return Math.random() * (max - min) + min;
 }
