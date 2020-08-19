@@ -1,22 +1,23 @@
-class Person {
 
-  #frames_infected = 100;
-  constructor(location, infected=false, removed=false) {
-    if (!location instanceof Point) {
-      throw new TypeError("location must be of type Point")
-    }
-    this.location = location;
+class Person extends Point {
+
+  constructor(x, y, infected=false, removed=false) {
+    // call Point constructor
+    super(x, y);
+    // Person specific attributes
     this.infected = infected;
     this.removed = removed;
     this.color = 'green';
-    // private attributes
-    this.days_infected = 0;
+    this.frames_infected = 0;
+    this.inf_area = new Circle(this.x, this.y, 20);
+    // private attribute
+    this._MAX_FRAMES_INF = 100;
   }
 
-  updateLoc() {
-    let new_x = this.location.x + randBetween(-3,3);
-    let new_y = this.location.y + randBetween(-3,3);
-    this.location.chngP(new_x, new_y);
+  moveRand(stepSize) {
+    let new_x = this.x + randBetween(-stepSize, stepSize);
+    let new_y = this.y + randBetween(-stepSize, stepSize);
+    this.chngP(new_x, new_y);
   }
 
   infect() {
@@ -38,19 +39,26 @@ class Person {
     }
   }
 
-  update() {
+  walkRand(stepSize) {
     if (this.removed) {
       return;
     } else {
-      this.updateLoc();
+      this.moveRand(stepSize);
       if (this.infected) {
-        this.days_infected += 1;
-        if (this.days_infected > this.#frames_infected) {
+        this.frames_infected += 1;
+        if (this.frames_infected > this._MAX_FRAMES_INF) {
           this.remove();
         }
       }
     }
   }
 
+  draw(ctx) {
+    if (this.infected) {
+      super.draw(ctx, true, 'red');
+    } else {
+      super.draw(ctx, true, 'green');
+    }
+  }
 
-};
+}

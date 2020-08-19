@@ -13,12 +13,12 @@ class Point {
         this.y = y;
     }
 
-    draw(ctx, fill=false) {
+    draw(ctx, fill=false, color='green') {
         ctx.beginPath();
         ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
         ctx.stroke();
         if (fill) {
-            ctx.fillStyle = "green";
+            ctx.fillStyle = color;
             ctx.fill();
         }
     }
@@ -30,6 +30,38 @@ class Point {
         // get the euclidean distance
         return Math.hypot(dx, dy);
     }
+}
+
+class Circle {
+    constructor(x, y, r) {
+        this.center = new Point(x, y);
+        this.r = r;
+    }
+
+    contains(p) {
+        let d = Point.distance(p, this.center);
+        if (d > this.r) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    random() {
+        let r = this.r * Math.sqrt(Math.random());
+        let rad = Math.random() * 2 * Math.PI;
+        let x = r * Math.cos(rad) + this.center.x;
+        let y = r * Math.sin(rad) + this.center.y;
+        return new Point(x,y);
+    }
+
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.center.x, this.center.y, this.r, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
+
 }
 
 
@@ -112,10 +144,11 @@ class Rect {
 
 
 class QuadTree {
+
     constructor(boundary, capacity) {
         this.boundary = boundary;
         this.capacity = capacity;
-        this.points = [];
+        this.items = [];
         this.divided = false;
     }
 
@@ -155,13 +188,13 @@ class QuadTree {
         this.divided = true;
     }
 
-    insert(p) {
-        if (!this.boundary.contains(p)) {
+    insert(thing) {
+        if (!this.boundary.contains(thing)) {
             return false;
         }
         
-        if (this.points.length < this.capacity) {
-            this.points.push(p);
+        if (this.items.length < this.capacity) {
+            this.items.push(thing);
             return true;
         }
             
@@ -170,13 +203,13 @@ class QuadTree {
         }
                 
         return (
-        this.ne.insert(p) 
+        this.ne.insert(thing) 
         || 
-        this.nw.insert(p) 
+        this.nw.insert(thing) 
         ||
-        this.se.insert(p) 
+        this.se.insert(thing) 
         || 
-        this.sw.insert(p)
+        this.sw.insert(thing)
         );
   }
 
@@ -189,9 +222,9 @@ class QuadTree {
       return found;
     }
 
-    for (let p of this.points) {
-      if (rng.contains(p)) {
-        found.push(p);
+    for (let thing of this.items) {
+      if (rng.contains(thing)) {
+        found.push(thing);
       }
     }
     if (this.divided) {
