@@ -20,7 +20,7 @@ class Point {
         this.y = y;
     }
 
-    draw(ctx, fill=false, color='green') {
+    draw(ctx, fill=false, color='black') {
         ctx.beginPath();
         ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
         ctx.stroke();
