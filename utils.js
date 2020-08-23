@@ -1,5 +1,5 @@
 /*
-* Good chunks of this file contains similar to
+* Good chunks of the QuadTree class contains similar code to
 * Daniel Shiffman's 'Coding Challenge' video found at: https://www.youtube.com/watch?v=OJxEcs0w_kE&vl=en.
 * The video series explains how to implement a Quad Tree data structure.
 */
@@ -10,9 +10,10 @@ function randBetween(min=-1, max=1) {
 }
 
 class Point {
-    constructor(x, y) {
+    constructor(x, y, size=2) {
         this.x = x;
         this.y = y;
+        this.size = size;
     }
 
     chngP(x, y) {
@@ -22,7 +23,7 @@ class Point {
 
     draw(ctx, fill=false, color='black') {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
         ctx.stroke();
         if (fill) {
             ctx.fillStyle = color;
@@ -253,4 +254,59 @@ class QuadTree {
         this.se.show(ctx);
     }
   }
+}
+
+
+class Vector {
+
+    constructor(...compnts) {
+        this.compnts = compnts;
+    }
+
+    length() {
+        return Math.hypot(...this.compnts);
+    }
+
+    add(vector) {
+        return new Vector(
+            ...vector.compnts.map((compnt, i) => compnt+this.compnts[i])
+            );
+    }
+
+    sub(vector) {
+        return new Vector(
+            ...vector.compnts.map((compnt, i) => compnt-this.compnts[i])
+            );        
+    }
+
+    scale(scaler) {
+        return new Vector(
+            ...this.compnts.map(compnt => compnt*scaler)
+            );            
+    }
+
+    static sum(...nums) {
+        return nums.reduce((sum, curr) => {return sum += curr});
+    }
+
+    dot(vector) {
+        return Vector.sum(
+            ...vector.compnts.map((compnt, i) => compnt*this.compnts[i])
+            );            
+    }
+
+    cross(vector) {
+        return new Vector(
+          this.compnts[1] * compnts[2] - this.compnts[2] * compnts[1],
+          this.compnts[2] * compnts[0] - this.compnts[0] * compnts[2],
+          this.compnts[0] * compnts[1] - this.compnts[1] * compnts[0]
+        )
+    }
+
+    // projects the vector onto this vector
+    /*
+    proj(vector) {
+        let scaler = 
+    }
+    */
 }
