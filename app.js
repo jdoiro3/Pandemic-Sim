@@ -1,43 +1,44 @@
 
 
-let canvas = document.getElementById('my-canvas');
-let ctx = canvas.getContext('2d');
-let c = new Circle(canvas.width/2, canvas.height/2, 400);
-c.draw(ctx);
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var c = new Circle(canvas.width/2, canvas.height/2, 500);
 
-let people = [];
-for (let i = 0; i < 100; i++) {
+var people = [];
+for (let i = 0; i < 500; i++) {
 	let pnt = c.random();
 	let person = new Person(pnt.x, pnt.y, 's');
-	let randp = c.random();
-	randp.draw(ctx);
-	person.toPoint(randp);
 	people.push(person);
 }
 
-function check(person) {
-	if (person.moveStatus !== 'to point') {
+function move(person, speed) {
+	if (Math.random() < .001) {
 		let randp = c.random();
 		person.toPoint(randp);
 	}
+
+	person.update(speed);
+	person.draw(ctx);
 }
 
 function refresh() {
 
-	let canvas = document.getElementById('my-canvas');
-	let ctx = canvas.getContext('2d');
-
 	ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-	let c = new Circle(canvas.width/2, canvas.height/2, 400);
+	ctx.fillStyle = "rgb(0,0,0)";
+	ctx.fillRect(0,0, canvas.width, canvas.height);
 	c.draw(ctx);
 
-	people.forEach(p => check(p));
-	people.forEach(p => p.dest.draw(ctx));
-	people.forEach(p => p.update(20));
-	people.forEach(p => p.draw(ctx));
-
+	people.forEach(p => move(p, 2));
 
 	window.requestAnimationFrame(refresh);
 }
+
+canvas.addEventListener("click", function(event) {
+	let rect = canvas.getBoundingClientRect();
+	let x = event.clientX - rect.left;
+	let y = event.clientY - rect.top;
+	let person = new Person(x, y, 'i');
+	people.push(person);
+})
 
 refresh();

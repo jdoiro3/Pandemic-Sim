@@ -160,8 +160,6 @@ class QuadTree {
         this.divided = false;
     }
 
-    // CHANGES MAY BE NEEDED
-    // - subdivide is tightly cuppled (knows that boundary has center)
     subdivide() {
         let ne = new Rect(
             this.boundary.center.x + this.boundary.w / 4, 
@@ -304,9 +302,8 @@ class Vector {
     }
 
     // projects the vector onto this vector
-    /*
     proj(vector) {
-        let scaler = 
+        let scaler = this.dot(vector) / this.length();
+        return this.scale(scaler);
     }
-    */
 }

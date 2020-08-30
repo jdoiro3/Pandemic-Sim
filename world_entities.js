@@ -1,6 +1,8 @@
 
 class Person extends Point {
 
+  static maxFramesInf = 100;
+
   constructor(x, y, status, infRadius=20, probInf=.2) {
     // call Point constructor
     super(x, y);
@@ -29,7 +31,6 @@ class Person extends Point {
     this.framesInfected = 0;
     this.infArea = new Circle(this.x, this.y, infRadius);
     this.moveStatus = 'random'; 
-    this.maxFramesInf = 100;
     this.dest = undefined;
   }
 
@@ -41,14 +42,14 @@ class Person extends Point {
 
   toPoint(point) {
     this.dest = point;
-    this.moveStatus = 'to point';
+    this.moveStatus = 'point';
     let dis = Point.distance(this, point);
     this.dx_u = (this.x - point.x) / dis;
     this.dy_u = (this.y - point.y) / dis; 
   }
 
   moveToPoint(stepSize) {
-    if (this.moveStatus !== 'to point') {
+    if (this.moveStatus !== 'point') {
       return;
     } else {
       let newX = this.x - this.dx_u * stepSize;
@@ -87,15 +88,25 @@ class Person extends Point {
     }
   }
 
+  incrementInf() {
+    this.framesInfected += 1;
+    if (this.framesInfected > Person.maxFramesInf) {
+      this.remove();
+    }
+  }
+
   update(stepSize) {
     if (this.status === 'r') {
       return;
     } else {
+      if (this.status === 'i') {
+        this.incrementInf();
+      }
       switch (this.moveStatus) {
         case 'random':
           this.moveRand(stepSize);
           break;
-        case 'to point':
+        case 'point':
           this.moveToPoint(stepSize);
           break;
       }
@@ -109,6 +120,22 @@ class Person extends Point {
   getExposed(qt) {
     let rect = new Rect(this.x, this.y, this.infArea.r, this.infArea.r);
     return qt.query(rect);
+  }
+
+  movingRand() {
+    if (this.moveStatus === 'rand') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  movingToPoint() {
+    if (this.moveStatus === 'point') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
