@@ -1,9 +1,9 @@
 
 class Person extends Point {
 
-  static maxFramesInf = 100;
+  static maxFramesInf = 500;
 
-  constructor(x, y, status, infRadius=20, probInf=.2) {
+  constructor(x, y, status, infRadius=20, probInf=.7) {
     // call Point constructor
     super(x, y);
     // Person specific attributes
@@ -32,6 +32,7 @@ class Person extends Point {
     this.infArea = new Circle(this.x, this.y, infRadius);
     this.moveStatus = 'random'; 
     this.dest = undefined;
+    this.probInf = probInf;
   }
 
   moveRand(stepSize) {
@@ -70,11 +71,12 @@ class Person extends Point {
     } else {
       this.color = 'red';
       this.hadInfection = true;
+      this.status = 'i';
     }
   }
 
   expose() {
-    if (Math.random()  > this.probInf) {
+    if (Math.random() < this.probInf) {
       this.infect();
     } else {
       return;
