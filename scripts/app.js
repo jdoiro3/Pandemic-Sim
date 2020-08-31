@@ -2,17 +2,17 @@
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
-var c = new Circle(canvas.width/2, canvas.height/2, 500);
+var c = new Circle(canvas.width/2, canvas.height/2, 450);
 
 var people = [];
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 1000; i++) {
 	let pnt = c.random();
 	let person = new Person(pnt.x, pnt.y, 's');
 	people.push(person);
 }
 
 function move(person, speed, qt) {
-	if (Math.random() < .001) {
+	if (Math.random() < .0001) {
 		let randp = c.random();
 		person.toPoint(randp);
 	}
@@ -24,7 +24,7 @@ function move(person, speed, qt) {
 function refresh() {
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-	ctx.fillStyle = "rgb(175,238,238)";
+	ctx.fillStyle = "rgb(0,0,0)";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	c.draw(ctx);
 

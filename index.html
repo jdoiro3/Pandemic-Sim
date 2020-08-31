@@ -1,10 +1,21 @@
 <html>
-<script src="utils.js" defer></script>
-<script src="world_entities.js" defer></script>
-<script src="app.js" defer></script>
-<link href="style.css" rel="stylesheet"></link>
-<body>
-	<h1>Work in Progress</h1>
+<script src="./scripts/utils.js" defer></script>
+<script src="./scripts/world_entities.js" defer></script>
+<script src="./scripts/app.js" defer></script>
+<link href="./css/style.css" rel="stylesheet"></link>
+<header class="flex-container">
+	<h1 id="title">Pandemic Simple Simulator</h1>
+</header>
+<body class="flex-container">
+	<p>
+		A novel virus is sweeping across the world. But thanks to countless, dedicated, scientist, using a simple but rigorous method of discovery, a reasonably effective vaccine will be available at some point in the near future.
+
+        Carl Sagan once said: "_Somewhere, something incredible is waiting to be known._" As long as there are people wanting to know the things, I think for the most part we'll be alright. However, something this whole ordeal has taught me is that without proper funding from our governments, scientific discovery is slowed and the ones searching do so hindered. It's important that we all understand that funding science is critical, even if we don't initially see an economic benefit, and understanding the basics of certain things, such as pandemics, viruses and how vaccines are made, will help us realize why it's important and cost so much. The aim of this project and basic web page is to help myself get educated on these things and hopefully in the process educate others. So, crack a cold one and let's down some science together.
+        <div align="left">
+           <img src="./images/giphy.gif"><br>
+        </div>
+	</p>
+	<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 	<canvas id="canvas" width=1000 height=1000>
    Your browser is very old. Get a new one. 
   </canvas>

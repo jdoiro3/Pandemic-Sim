@@ -143,6 +143,7 @@ class Rect {
     }
 
     draw(ctx) {
+        ctx.strokeStyle = "rgb(255, 255, 255)";
         ctx.strokeRect(this.topLeft.x, this.topLeft.y, this.w, this.h);
     }
 
