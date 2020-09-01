@@ -3,7 +3,7 @@ class Person extends Point {
 
   static maxFramesInf = 500;
 
-  constructor(x, y, status, infRadius=20, probInf=.01) {
+  constructor(x, y, status, infRadius=20, probInf=.05) {
     // call Point constructor
     super(x, y);
     // Person specific attributes
@@ -138,6 +138,10 @@ class Person extends Point {
     } else {
       return false;
     }
+  }
+
+  chngProbInf(v) {
+    this.probInf = v;
   }
 
 }
