@@ -14,18 +14,18 @@
 			<div class="border" id="sliders">
 				<div class="slider">
 				  <input type="range" id="social-dist" name="social-dist"
-				         min="0" max="10" value=2 step=.5>
-				  <label for="volume">Social Distance Level</label>
+				         min="0" max="5" value=2.5 step=.1>
+				  <label for="social-dist">Social Distance Level</label>
 				</div>
 				<div class="slider">
 				  <input type="range" id="travel" name="travel"
-				         min="0" max="11">
-				  <label for="volume">Travel Level</label>
+				         min="0" max=".001" value=.0005 step=.0001>
+				  <label for="travel">Travel Level</label>
 				</div>
 				<div class="slider">
 				  <input type="range" id="inf" name="inf"
-				         min="0" max=".6" value=.3 step=.01>
-				  <label for="volume">Infectious Level</label>
+				         min="0" max=".01" value=.005 step=.0001>
+				  <label for="inf">Infectious Level</label>
 				</div>
 			</div>
 			<canvas class="border" id="canvas" width=1000 height=1000>
