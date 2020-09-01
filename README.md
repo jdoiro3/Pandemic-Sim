@@ -6,4 +6,10 @@
 
 ## Page Content
 
+## Access Page
+
+The oage can be found [here](https://jdoiro3.github.io/Pandemic-Sim-js)
+
+<iframe src="https://jdoiro3.github.io/Pandemic-Sim-js" title="Page">
+
 
