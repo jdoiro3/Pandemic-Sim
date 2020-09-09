@@ -1,37 +1,60 @@
 <html>
-
-	<script src="./scripts/utils.js" defer></script>
-	<script src="./scripts/world_entities.js" defer></script>
-	<script src="./scripts/app.js" defer></script>
-	<link href="./css/style.css" rel="stylesheet"></link>
-
-	<header id="head" class="flex-container">
-		<h1 id="title">Simple Pandemic Simulator</h1>
-	</header>
+	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+		<script type="text/javascript" src="./scripts/utils.js" defer></script>
+		<script type="text/javascript" src="./scripts/world_entities.js" defer></script>
+		<script type="text/javascript" src="./scripts/charting.js" defer></script>
+		<script type="text/javascript" src="./scripts/simulator.js" defer></script>
+		<link href="./css/style.css" rel="stylesheet"></link>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
 
 	<body>
-		<div class="flex-container2 border">
-			<div class="border" id="sliders">
-				<div class="slider">
+
+		<header id="page-header">
+			<h1 id="title">Simple Pandemic Simulator</h1>
+		</header>
+
+		<div id="simulator">
+
+			<div class="border" id="options">
+				<div class="option">
 				  <input type="range" id="social-dist" name="social-dist"
 				         min="0" max="5" value=2.5 step=.1>
 				  <label for="social-dist">Social Distance Level</label>
 				</div>
-				<div class="slider">
+				<div class="option">
 				  <input type="range" id="travel" name="travel"
 				         min="0" max=".001" value=.0005 step=.0001>
 				  <label for="travel">Travel Level</label>
 				</div>
-				<div class="slider">
+				<div class="option">
 				  <input type="range" id="inf" name="inf"
 				         min="0" max=".01" value=.005 step=.0001>
 				  <label for="inf">Infectious Level</label>
 				</div>
+				<div id="radios">
+					<div class="option">
+						<input type="radio" id="r1" name="draw-type" value="dh"> Drawing Hubs
+					</div>
+					<div class="option">
+						<input type="radio" id="r2" name="draw-type" value="di"> Drawing Inf People
+					</div>
+					<div class="option">
+						<input type="radio" id="r3" name="draw-type" value="ds"> Drawing Sus People 
+					</div> 
+				</div>
 			</div>
-			<canvas class="border" id="canvas" width=1000 height=1000>
-			   Your browser is very old. Get a new one. 
+
+			<canvas id="canvas" width=1000 height=700>
+				Your browser is very old. Get a new one. 
 			</canvas>
+
+			<canvas id="myChart" class="border" width="450" height="300"></canvas>
+
 		</div>
+
 	</body>
 
 </html>

@@ -33,6 +33,8 @@ class Person extends Point {
     this.moveStatus = 'random'; 
     this.dest = undefined;
     this.probInf = probInf;
+    this.home = undefined;
+    this.hub = undefined;
   }
 
   moveRand(stepSize) {
@@ -144,4 +146,69 @@ class Person extends Point {
     this.probInf = v;
   }
 
+  setHub(hub) {
+    this.hub = hub;
+  }
+
+  setHome(home) {
+    this.home = home;
+  }
+
+  getRandDestination(hubs) {
+    let hub_choices = hubs.filter(hub => hub !== this.hub);
+    const rand = Math.floor(Math.random() * hub_choices.length);
+    return hub_choices[rand];
+  }
+
+}
+
+
+class Population {
+  constructor(people=[]) {
+    this.people = people;
+  }
+
+  addPerson(person) {
+    this.people.push(person);
+  }
+
+  get totalInf() {
+    let count = 0;
+    this.people.forEach(p => {
+      if (p.hadInfection) {
+        count++;
+      }
+    })
+    return count;
+  }
+
+  get currInf() {
+    let count = 0;
+    this.people.forEach(p => {
+      if (p.status === 'i') {
+        count++;
+      }
+    })
+    return count;
+  }
+
+  get currSus() {
+    let count = 0;
+    this.people.forEach(p => {
+      if (p.status === 's') {
+        count++;
+      }
+    })
+    return count;
+  }
+
+  get currRem() {
+    let count = 0;
+    this.people.forEach(p => {
+      if (p.status === 'r') {
+        count++;
+      }
+    })
+    return count; 
+  }
 }

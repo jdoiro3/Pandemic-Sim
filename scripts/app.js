@@ -93,7 +93,7 @@ canvas.addEventListener("mousemove", function(event) {
 	}
 })
 
-canvas.addEventListener("mouseup", function(event) {
+canvas.addEventListener("mouseup", function() {
 		drawing = false;
 
 })

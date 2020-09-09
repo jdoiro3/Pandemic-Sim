@@ -1,30 +1,23 @@
-.flex-container {
+#page-header {
 	display: flex;
 	flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.flex-container2 {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-
-/* page header */
-header {
     height: 25vh;
     width: 100vw;
     background-image: url(../images/header-background.jpg);
     background-size: cover;
     background-position: top;
-    align-items: center;
 }
 
-
-
+#simulator {
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 
 #title {
 	color: white;
@@ -33,18 +26,12 @@ header {
 	font-size: 40px;
 }
 
-#sliders {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.slider {
+.option {
     margin: 10px;
 }
 
 #canvas {
-    display: inline;
-    margin: 10px;
+    margin-left: 10px;
 }
 
 
