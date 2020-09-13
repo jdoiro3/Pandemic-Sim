@@ -53,7 +53,8 @@ function refresh() {
             p.setHome(rand_pnt);
             p.toPoint(rand_pnt);
         }
-        p.update(step_size)
+        p.update(step_size);
+        p.chngProbInf(inf_v);
     });
     // draw each person
     pop.people.forEach(p => p.draw(ctx));

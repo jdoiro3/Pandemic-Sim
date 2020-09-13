@@ -19,20 +19,32 @@
 			<div class="column" id="col1">
 				<div id="parameters">
 					<h2>Pandemic Parameters</h2>
-					<div class="slider">
+					<div class="slider tooltip">
+						<span class="tooltiptext">
+							Increasing this slider will decrease the movement of 
+							the population (represented as dots) and decreasing it will
+							increase the movement. This slider does not change the amount
+							of people traveling.
+						</span>
 						<label for="social-dist">Social Distance Level</label>
 						<input type="range" id="social-dist" name="social-dist"
 						         min="0" max="5" value=2.5 step=.1>
 					</div>
-					<div class="slider">
+					<div class="slider tooltip">
+						<span class="tooltiptext">
+							Increasing this slider will cause more people in the population
+							to travel to another hub (represented as circles) and decreasing
+							it will cause less people to travel.
+						</span>
 						<label for="travel">Travel Level</label>
 					  	<input type="range" id="travel" name="travel"
 					         min="0" max=".001" value=.0005 step=.0001>
 					</div>
-					<div class="slider">
+					<div class="slider tooltip">
+						<span class="tooltiptext">Tooltip text</span>
 					    <label for="inf">Infectious Level</label>
 					    <input type="range" id="inf" name="inf"
-					         min="0" max=".01" value=.005 step=.0001>
+					         min="0" max=".005" value=.0025 step=.0001>
 					</div>
 				</div>
 				<div id="drawing-options">
@@ -51,10 +63,10 @@
 				</div>
 	  		</div>
 	  		<div class="column" id="col2">
-				<canvas id="canvas" width=1100 height=600>
+				<canvas id="canvas" width=1100 height=700>
 					Your browser is very old. Get a new one. 
 				</canvas>
-				<canvas id="myChart" class="border" width="1000" height="300">
+				<canvas id="pandemic-state" width="1100" height="300">
 					Your browser is very old. Get a new one. 
 				</canvas>
 	  		</div>

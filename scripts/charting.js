@@ -17,7 +17,7 @@ const chart_colors = {
 };
 
 // line-chart canvas
-var ctx_charts = document.getElementById('myChart').getContext('2d');
+var ctx_charts = document.getElementById('pandemic-state').getContext('2d');
 // population object
 var pop = new Population();
 // array that holds line chart x axis labels

@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 #page-header {
     display: flex;
@@ -12,6 +10,11 @@
     background-image: url(../images/header-background.jpg);
     background-size: cover;
     background-position: top;
+}
+
+#title {
+    color: white;
+    font-family: "Lucida Console", Monaco, monospace;
 }
 
 .row {
@@ -46,5 +49,42 @@
 
 .draw-type {
     margin: 5px;
+}
+
+
+/* create tooltips that will display when the user's mouse is on an element */
+
+.tooltip {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 

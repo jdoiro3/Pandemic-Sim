@@ -1,7 +1,7 @@
 
 class Person extends Point {
 
-  static maxFramesInf = 500;
+  static maxFramesInf = 1000;
 
   constructor(x, y, status, infRadius=20, probInf=.05) {
     // call Point constructor
@@ -108,10 +108,20 @@ class Person extends Point {
       }
       switch (this.moveStatus) {
         case 'random':
-          this.moveRand(stepSize);
+          if (this.hub.contains(this)) {
+            this.moveRand(stepSize);
+          } else {
+            // if the Person (dot) ventures outside the hub,
+            // we send it between 5% and 50% of the way back to the center
+            let hub_center = this.hub.center;
+            let w_dx = (hub_center.x - this.x)*randBetween(.05,.5);
+            let w_dy = (hub_center.y - this.y)*randBetween(.05,.5);
+            this.toPoint(new Point(this.x + w_dx, this.y + w_dy));
+            this.moveToPoint(stepSize);
+          }
           break;
         case 'point':
-          this.moveToPoint(stepSize);
+          this.moveToPoint(3);
           break;
       }
     }
@@ -122,6 +132,9 @@ class Person extends Point {
   }
 
   getExposed(qt) {
+    if (this.moveStatus === 'point') {
+      return [];
+    }
     let rect = new Rect(this.x, this.y, this.infArea.r, this.infArea.r);
     return qt.query(rect);
   }
