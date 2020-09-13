@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+		<script type="text/javascript" src="./scripts/utils.js" defer></script>
+		<script type="text/javascript" src="./scripts/world_entities.js" defer></script>
+		<script type="text/javascript" src="./scripts/charting.js" defer></script>
+		<script type="text/javascript" src="./scripts/simulator.js" defer></script>
+		<link href="./css/style.css" rel="stylesheet"></link>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<header id="page-header">
+		<h1 id="title">Simple Pandemic Simulator</h1>
+	</header>
+
+	<body>
+		<div class="row">
+			<div class="column" id="col1">
+				<div id="parameters">
+					<h2>Pandemic Parameters</h2>
+					<div class="slider">
+						<label for="social-dist">Social Distance Level</label>
+						<input type="range" id="social-dist" name="social-dist"
+						         min="0" max="5" value=2.5 step=.1>
+					</div>
+					<div class="slider">
+						<label for="travel">Travel Level</label>
+					  	<input type="range" id="travel" name="travel"
+					         min="0" max=".001" value=.0005 step=.0001>
+					</div>
+					<div class="slider">
+					    <label for="inf">Infectious Level</label>
+					    <input type="range" id="inf" name="inf"
+					         min="0" max=".01" value=.005 step=.0001>
+					</div>
+				</div>
+				<div id="drawing-options">
+					<h2>Drawing</h2>
+					<div id="radios">
+						<div class="draw-type">
+							<input type="radio" id="r1" name="draw-type" value="dh"> Draw Hubs
+						</div>
+						<div class="draw-type">
+							<input type="radio" id="r2" name="draw-type" value="di"> Draw Inf People
+						</div>
+						<div class="draw-type">
+							<input type="radio" id="r3" name="draw-type" value="ds"> Draw Sus People 
+						</div> 
+					</div>
+				</div>
+	  		</div>
+	  		<div class="column" id="col2">
+				<canvas id="canvas" width=1100 height=600>
+					Your browser is very old. Get a new one. 
+				</canvas>
+				<canvas id="myChart" class="border" width="1000" height="300">
+					Your browser is very old. Get a new one. 
+				</canvas>
+	  		</div>
+	  	</div>
+	</body>
+
+</html>

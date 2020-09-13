@@ -1,3 +1,5 @@
+// disable gridlines on charts
+Chart.defaults.scale.gridLines.display = false;
 
 const chart_colors = {
     suseptible: {
@@ -22,7 +24,7 @@ var pop = new Population();
 var labels = [];
 
 function updateChartData(suseptible, infected, removed, frame, chart) {
-  if (chart.data.datasets[0].data.length > 50) {
+  if (chart.data.datasets[0].data.length > 500) {
       chart.data.datasets[0].data.shift();
       chart.data.datasets[1].data.shift();
       chart.data.datasets[2].data.shift();
@@ -102,4 +104,4 @@ setInterval(function(){
   if (pop.people.length > 0) {
       updateChartData(pop.currSus, pop.currInf, pop.currRem, "", myChart);
   }
-}, 500);
+}, 200);
