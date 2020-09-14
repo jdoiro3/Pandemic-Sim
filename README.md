@@ -10,7 +10,7 @@ Hubs can be thought of as cities or any other type of centeral location with hig
 
 ![How to Draw Hubs Gif](https://media.giphy.com/media/KFsjZfl2S3SNEYfeXc/giphy.gif)
 
-Their are three types of people in the population: suseptible, infected and removed. Suseptible and infected people (represented as dots) can be drawn by either selecting *Draw Inf People* or *Draw Sus People*, and using your mouse while holding down a left click.
+They're three types of people in the population: suseptible, infected and removed. Suseptible and infected people (represented as dots) can be drawn by either selecting *Draw Inf People* or *Draw Sus People*, and using your mouse while holding down a left click.
 
 ![How to Draw People Gif](https://media.giphy.com/media/Y1pbAIghcV2N4s2ygN/giphy.gif)
 
