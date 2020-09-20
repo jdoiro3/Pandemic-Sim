@@ -20,6 +20,6 @@ To start a simulation, the only thing the user needs to do is draw one or many i
 
 ## Access Page
 
-The page can be found [here](https://jdoiro3.github.io/Pandemic-Sim-js)
+The page can be found [here](https://jdoiro3.github.io/Pandemic-Sim)
 
 
